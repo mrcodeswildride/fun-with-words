@@ -2,38 +2,35 @@
 <html>
 
 <head>
-    <title>Fun with Words</title>
-    <meta name="viewport" content="width=device-width, initial-scale=0.5">
-    <link rel="stylesheet" href="stylesheet.css">
+	<title>Fun with Words</title>
+	<meta name="viewport" content="width=device-width, initial-scale=0.75">
+	<link href="style.css" rel="stylesheet">
+	<script src="script.js" defer>
+
+	</script>
 </head>
 
 <body>
-    <h1>Fun with Words</h1>
+	<h1>Fun with Words</h1>
 
-    <textarea id="words"></textarea>
+	<input type="text" placeholder="word" id="word">
+  <p id="resultParagraph">Result will appear here</p>
 
-    <div id="controls">
-        <h2>Reverse</h2>
-        <div id="reverseSection">
-            <button id="reverse">Reverse</button>
-        </div>
+  <h2>Reverse</h2>
+  <button id="reverseButton">Reverse</button>
 
-        <h2>Replace Character</h2>
-        <div id="replaceCharacter">
-            Replace <input id="character" type="text" maxlength="1"> with <input id="text" type="text">
-            <button id="replace">Replace</button>
-        </div>
+  <h2>Replace Character</h2>
+  Replace
+  <input type="text" maxlength="1" id="character">
+  with
+  <input type="text" id="text">
+  <button id="replaceButton">Replace</button>
 
-        <h2>Pig Latin</h2>
-        <div id="pigLatinSection">
-            <p>
-                If a word starts with a consonant, the first letter is moved to the back, and ay is added on. If a word starts with a vowel, the first letter does not move, but ay is still added to the back.
-            </p>
-            <button id="pigLatin">Pig Latin</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+  <h2>Pig Latin</h2>
+  <p>
+      If a word starts with a consonant, the first letter is moved to the back, and ay is added on. If a word starts with a vowel, the first letter does not move, but ay is still added to the back.
+  </p>
+  <button id="pigButton">Pig Latin</button>
 </body>
 
 </html>

@@ -1,75 +1,56 @@
-var wordsInput = document.getElementById("words");
+let word = document.getElementById(`word`)
+let resultParagraph = document.getElementById(`resultParagraph`)
+let reverseButton = document.getElementById(`reverseButton`)
+let character = document.getElementById(`character`)
+let text = document.getElementById(`text`)
+let replaceButton = document.getElementById(`replaceButton`)
+let pigButton = document.getElementById(`pigButton`)
 
-var reverseButton = document.getElementById("reverse");
-
-var characterInput = document.getElementById("character");
-var textInput = document.getElementById("text");
-var replaceButton = document.getElementById("replace");
-
-var pigLatinButton = document.getElementById("pigLatin");
-
-reverseButton.addEventListener("click", reverse);
-replaceButton.addEventListener("click", replace);
-pigLatinButton.addEventListener("click", pigLatin);
-
-wordsInput.focus();
+reverseButton.addEventListener(`click`, reverse)
+replaceButton.addEventListener(`click`, replace)
+pigButton.addEventListener(`click`, pigLatin)
 
 function reverse() {
-    var input = wordsInput.value.trim();
-    var output = "";
+  if (word.value != ``) {
+    resultParagraph.innerHTML = ``
 
-    for (var i = input.length - 1; i >= 0; i--) {
-        output += input[i];
+    for (let i = word.value.length - 1; i >= 0; i--) {
+      resultParagraph.innerHTML = `${resultParagraph.innerHTML}${word.value[i]}`
     }
-
-    wordsInput.value = output;
-    wordsInput.focus();
+  }
 }
 
 function replace() {
-    var input = wordsInput.value;
-    var output = "";
+  if (word.value != ``) {
+    resultParagraph.innerHTML = ``
 
-    for (var i = 0; i < input.length; i++) {
-        if (input[i] == characterInput.value) {
-            output += textInput.value;
-        }
-        else {
-            output += input[i];
-        }
+    for (let char of word.value) {
+      if (char == character.value) {
+        resultParagraph.innerHTML = `${resultParagraph.innerHTML}${text.value}`
+      }
+      else {
+        resultParagraph.innerHTML = `${resultParagraph.innerHTML}${char}`
+      }
     }
-
-    wordsInput.value = output;
-    wordsInput.focus();
+  }
 }
 
 function pigLatin() {
-    var words = wordsInput.value.trim().split(" ");
-    var output = "";
+  if (word.value != ``) {
+    resultParagraph.innerHTML = ``
+    let first = word.value[0].toLowerCase()
 
-    for (var i = 0; i < words.length; i++) {
-        var word = words[i];
+    if (first != `a` && first != `e` && first != `i` && first != `o` && first != `u`) {
+      for (let i = 1; i < word.value.length; i++) {
+        resultParagraph.innerHTML = `${resultParagraph.innerHTML}${word.value[i]}`
+      }
 
-        if (word.length > 0) {
-            var firstCharacter = word[0].toLowerCase();
-
-            if (firstCharacter == "a" || firstCharacter == "e" || firstCharacter == "i" || firstCharacter == "o" || firstCharacter == "u") {
-                output += word + "ay";
-            }
-            else {
-                for (var j = 1; j < word.length; j++) {
-                    output += word[j];
-                }
-
-                output += word[0] + "ay";
-            }
-
-            if (i != words.length - 1) {
-                output += " ";
-            }
-        }
+      resultParagraph.innerHTML = `${resultParagraph.innerHTML}${word.value[0]}`
+    }
+    else {
+      resultParagraph.innerHTML = word.value
     }
 
-    wordsInput.value = output;
-    wordsInput.focus();
+    resultParagraph.innerHTML = `${resultParagraph.innerHTML}ay`
+  }
 }
